@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web-server:
+    image: nginx:alpine
+    ports:
+      - 443:443
+      - 88:88
+    container_name: web-server
+    volumes:
+      - ./html:/data/www
+      - ./nginx:/etc/nginx/conf.d/
+      - ./certs:/certs
