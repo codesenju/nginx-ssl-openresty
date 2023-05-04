@@ -1,20 +1,20 @@
 version: "3"
 services:
   web-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.openresty
-    image: nginx:openresty
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile.openresty
+    image: nginx:alpine
     ports:
-      - 443:443
-      - 88:88
+      - 8443:443
+#      - 88:88
     container_name: web-server
     volumes:
       - ./html:/data/www
-      - ./nginx:/etc/nginx/conf.d/
+      - ./nginx/ssl-example.conf:/etc/nginx/conf.d/default.conf
       - ./certs:/certs
-    networks:
-      - ansible_keycloak_net
-networks:
-  ansible_keycloak_net:
-    external: true
+#    networks:
+#      - ansible_keycloak_net
+##networks:
+#  ansible_keycloak_net:
+#    external: true
